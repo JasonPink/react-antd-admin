@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Archive production artifacts
-        run: zip -r dist.zip dist/**
+        run: cd dist && zip -r dist.zip ./*
 
       - name: Copy files via SSH
         uses: appleboy/scp-action@v0.1.5
@@ -44,6 +44,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /www/server/phpmyadmin
-            unzip -o dist.zip -d unzipped_dist 
+            rm -rf front-web
+            unzip -o dist.zip -d front-web 
+            rm -rf dist.zip
+
             # 运行其他部署相关的命令，比如重启服务
             # e.g., pm2 restart your-app
