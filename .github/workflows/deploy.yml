@@ -44,8 +44,8 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /www/server/phpmyadmin
-            rm -rf front-web
-            unzip -o dist.zip -d front-web 
+            rm -rf web
+            unzip -o dist.zip -d web 
             rm -rf dist.zip
 
             # 运行其他部署相关的命令，比如重启服务
