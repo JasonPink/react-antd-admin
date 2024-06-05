@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "dist.zip"
-          target: "/path/on/server"
+          target: "/www/server/phpmyadmin"
 
       - name: Execute remote commands via SSH
         uses: appleboy/ssh-action@v0.1.5
@@ -43,7 +43,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /path/on/server
-            unzip -o dist.zip -d unzipped_dist
+            cd /www/server/phpmyadmin
+            unzip -o dist.zip -d unzipped_dist 
             # 运行其他部署相关的命令，比如重启服务
             # e.g., pm2 restart your-app
