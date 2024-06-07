@@ -5,6 +5,7 @@ import {
     UserOutlined,
     SettingOutlined
 } from '@ant-design/icons';
+import AppMenu from './appMenu';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -13,17 +14,7 @@ const MainLayout = () => {
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible>
                 <div className="logo" />
-                <Menu theme="dark" mode="inline">
-                    <Menu.Item key="1" icon={<DashboardOutlined />}>
-                        <Link to="/dashboard">Dashboard</Link>
-                    </Menu.Item>
-                    <Menu.Item key="2" icon={<UserOutlined />}>
-                        <Link to="/users">Users</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<SettingOutlined />}>
-                        <Link to="/settings">Settings</Link>
-                    </Menu.Item>
-                </Menu>
+                <AppMenu></AppMenu>
             </Sider>
             <Layout>
                 <Header style={{ background: '#fff', padding: 0 }} />

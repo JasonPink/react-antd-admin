@@ -7,42 +7,62 @@ import {
 import Layout from '@/layouts';
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
+const Login = lazy(() => import('@/pages/Login'));
 const Users = lazy(() => import('@/pages/Users'));
 const Profile = lazy(() => import('@/pages/Users/profile'));
+const Userlist = lazy(() => import('@/pages/Users/list'));
 
-const router = createBrowserRouter([
+export const layoutRoutes = [
     {
         path: '/',
-        element: <Layout />,
+        element: <Navigate to="/dashboard" />
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard />,
+        meta: {
+            title: '数据看板'
+        }
+    },
+    {
+        path: 'user',
+        element: <Users />,
+        meta: {
+            title: '用户管理'
+        },
         children: [
             {
-                path: '/',
-                element: <Navigate to="/dashboard" />
+                path: 'profile',
+                element: <Profile />,
+                meta: {
+                    title: '用户简介'
+                }
             },
             {
-                path: '/dashboard',
-                element: <Dashboard />
+                path: 'list',
+                element: <Userlist />,
+                meta: {
+                    title: '用户列表'
+                }
             },
             {
-                path: '/user',
-                element: <Users />,
-                children: [
-                    {
-                        path: 'profile',
-                        element: <Profile />
-                    },
-                    {
-                        path: '',
-                        element: <Navigate to="profile" />
-                    }
-                ]
+                path: '',
+                element: <Navigate to="profile" />
             }
         ]
     }
-]);
+];
 
-const Routes = () => {
-    return <RouterProvider router={router}></RouterProvider>;
-};
+const routes = [
+    {
+        path: '/login',
+        element: <Login />
+    },
+    {
+        path: '/',
+        element: <Layout />,
+        children: layoutRoutes
+    }
+];
 
-export default Routes;
+export default routes;
