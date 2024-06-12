@@ -1,7 +1,8 @@
 import React from 'react';
+import './index.less';
 
 const Dashboard = () => {
-    return <div>Dashboard</div>;
+    return <div className="dahsboard">Dashboard</div>;
 };
 
 export default Dashboard;
