@@ -1,11 +1,11 @@
 import { Layout, Menu } from 'antd';
-import { Link, Outlet } from 'react-router-dom';
 import {
     DashboardOutlined,
     UserOutlined,
     SettingOutlined
 } from '@ant-design/icons';
 import AppMenu from './appMenu';
+import { Outlet } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -19,7 +19,8 @@ const MainLayout = () => {
             <Layout>
                 <Header style={{ background: '#fff', padding: 0 }} />
                 <Content style={{ margin: '0 16px' }}>
-                    <Outlet />
+                    {/* <Outlet /> */}
+                    Outlet
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
                     Ant Design ©2023 Created by Ant UED
